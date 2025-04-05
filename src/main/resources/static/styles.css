@@ -1,0 +1,242 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #2c3e50;
+}
+
+.task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.task-form input,
+.task-form textarea,
+.task-form select {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border 0.3s;
+}
+
+.task-form input:focus,
+.task-form textarea:focus,
+.task-form select:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.task-form textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.task-form button {
+    padding: 12px;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.task-form button:hover {
+    background-color: #27ae60;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.task-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.task-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.task-content {
+    flex: 1;
+}
+
+.task-content h3 {
+    margin: 0 0 8px 0;
+    color: #2c3e50;
+}
+
+.task-content p {
+    margin: 0 0 8px 0;
+    color: #7f8c8d;
+}
+
+.task-content small {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.delete-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+    background: #c0392b;
+}
+
+/* Status colors */
+.task-card.todo {
+    border-left: 5px solid #f39c12;
+}
+
+.task-card.todo small {
+    background-color: #f39c12;
+    color: white;
+}
+
+.task-card.doing {
+    border-left: 5px solid #3498db;
+}
+
+.task-card.doing small {
+    background-color: #3498db;
+    color: white;
+}
+
+.task-card.done {
+    border-left: 5px solid #2ecc71;
+}
+
+.task-card.done small {
+    background-color: #2ecc71;
+    color: white;
+}
+
+/* Alert messages */
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    animation: slideIn 0.3s forwards;
+}
+
+.alert.success {
+    background: #2ecc71;
+}
+
+.alert.error {
+    background: #e74c3c;
+}
+
+@keyframes slideIn {
+    from { 
+        transform: translateX(100%); 
+        opacity: 0;
+    }
+    to { 
+        transform: translateX(0); 
+        opacity: 1;
+    }
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .task-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .delete-btn {
+        align-self: flex-end;
+    }
+}
+
+/* Loader */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Mensagem quando não há tarefas */
+.empty-message {
+    text-align: center;
+    color: #7f8c8d;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
